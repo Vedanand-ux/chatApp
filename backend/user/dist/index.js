@@ -9,8 +9,10 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const db_1 = __importDefault(require("./config/db"));
 const redis_1 = require("redis");
 const user_js_1 = __importDefault(require("./routes/user.js"));
+const rabbitmq_js_1 = require("./config/rabbitmq.js");
 dotenv_1.default.config();
 (0, db_1.default)();
+(0, rabbitmq_js_1.connectRabbitMQ)();
 exports.redisClient = (0, redis_1.createClient)({
     url: process.env.REDIS_URL
 });
