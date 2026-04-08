@@ -25,6 +25,7 @@ export const startSendOtpConsumer = async() =>{
           const transporter = nodemailer.createTransport({
             host: 'smtp.email.com',
             port:465,
+            secure:true,
             auth:
             {
               user:process.env.USER,

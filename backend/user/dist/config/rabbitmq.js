@@ -32,4 +32,3 @@ const publishToQuesue = async (queueName, message) => {
     channel.sendToQueue(queueName, Buffer.from(JSON.stringify(message)), { persistent: true });
 };
 exports.publishToQuesue = publishToQuesue;
-//# sourceMappingURL=rabbitmq.js.map

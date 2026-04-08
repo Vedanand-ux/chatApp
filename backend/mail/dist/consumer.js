@@ -28,6 +28,7 @@ const startSendOtpConsumer = async () => {
                     const transporter = nodemailer_1.default.createTransport({
                         host: 'smtp.email.com',
                         port: 465,
+                        secure: true,
                         auth: {
                             user: process.env.USER,
                             pass: process.env.PASSWORD
@@ -53,4 +54,3 @@ const startSendOtpConsumer = async () => {
     }
 };
 exports.startSendOtpConsumer = startSendOtpConsumer;
-//# sourceMappingURL=consumer.js.map
