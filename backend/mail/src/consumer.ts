@@ -9,8 +9,8 @@ export const startSendOtpConsumer = async() =>{
        protocol: 'amqp',
       hostname: process.env.RABBITMQ_HOST,
       port: 5672,
-      username: process.env.Rabbitmq_Username,
-      password: process.env.Rabbitmq_Password,
+      username: process.env.RABBITMQ_USERNAME,
+      password: process.env.RABBITMQ_PASSWORD,
     });
      const channel = await connection.createChannel();
      const queueName = 'send_otp';
@@ -23,18 +23,17 @@ export const startSendOtpConsumer = async() =>{
           const {to,subject,body} = JSON.parse(msg.content.toString())
 
           const transporter = nodemailer.createTransport({
-            host: 'smtp.email.com',
-            port:465,
-            secure:true,
-            auth:
-            {
-              user:process.env.USER,
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth: {
+              user: process.env.USER,
               pass:process.env.PASSWORD
             },  
           })
           
           await transporter.sendMail({
-            from:"Chat App",
+            from:`"Chat App" <vvinny021@gmail.com>`,
             to,
             subject,
             text:body,
